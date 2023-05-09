@@ -4,7 +4,7 @@
 # compile CXX with /usr/bin/g++
 CXX_DEFINES = -DSERIAL_COM_EXPORTS
 
-CXX_INCLUDES = -I/home/abinash/serial-com/serial-com/src
+CXX_INCLUDES = -I/serial-com
 
 CXX_FLAGS = -g -fPIC
 

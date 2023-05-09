@@ -1,5 +1,5 @@
 file(GLOB SOURCES *.cpp)
-include_directories(src)
+include_directories(${MyProject_SOURCE_DIR}/serial-com)
 
 # Here I add the required source and header files for my library.
 # I can add more source files if needed here
