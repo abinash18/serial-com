@@ -27,3 +27,8 @@ There can be methods like:
 2. close
 3. get error
 4. 
+
+
+
+Error codes:
+- -2 file not found / port not open
