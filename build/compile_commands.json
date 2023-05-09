@@ -1,0 +1,12 @@
+[
+{
+  "directory": "/home/abinash/serial-com/build",
+  "command": "/usr/bin/g++   -g -o CMakeFiles/TEST_COM.dir/main.cpp.o -c /home/abinash/serial-com/main.cpp",
+  "file": "/home/abinash/serial-com/main.cpp"
+},
+{
+  "directory": "/home/abinash/serial-com/build/serial-com",
+  "command": "/usr/bin/g++ -DSERIAL_COM_EXPORTS -I/home/abinash/serial-com/serial-com/src -g -fPIC -o CMakeFiles/SERIAL_COM.dir/serial-com.cpp.o -c /home/abinash/serial-com/serial-com/serial-com.cpp",
+  "file": "/home/abinash/serial-com/serial-com/serial-com.cpp"
+}
+]
