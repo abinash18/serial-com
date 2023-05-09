@@ -1,1 +1,1 @@
-/usr/bin/g++ -fPIC -g -shared -Wl,-soname,libSERIAL_COM.so -o libSERIAL_COM.so CMakeFiles/SERIAL_COM.dir/serial-com.cpp.o 
+/usr/bin/g++ -fPIC -g  -shared -Wl,-soname,libSERIAL_COM.so -o libSERIAL_COM.so CMakeFiles/SERIAL_COM.dir/serial-com.cpp.o 

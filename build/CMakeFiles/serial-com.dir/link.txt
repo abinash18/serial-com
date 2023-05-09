@@ -1,2 +1,0 @@
-/usr/bin/ar qc libserial-com.a CMakeFiles/serial-com.dir/serial-com.cpp.o
-/usr/bin/ranlib libserial-com.a
