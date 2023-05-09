@@ -1,0 +1,1 @@
+/usr/bin/g++  -g  -rdynamic CMakeFiles/TEST_COM.dir/main.cpp.o  -o TEST_COM  -Wl,-rpath,/home/tazvik/serial-com/build/serial-com serial-com/libSERIAL_COM.so 

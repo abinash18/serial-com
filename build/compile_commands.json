@@ -1,0 +1,12 @@
+[
+{
+  "directory": "/home/tazvik/serial-com/build",
+  "command": "/usr/bin/g++    -g   -o CMakeFiles/TEST_COM.dir/main.cpp.o -c /home/tazvik/serial-com/main.cpp",
+  "file": "/home/tazvik/serial-com/main.cpp"
+},
+{
+  "directory": "/home/tazvik/serial-com/build/serial-com",
+  "command": "/usr/bin/g++  -DSERIAL_COM_EXPORTS -I/serial-com  -g -fPIC   -o CMakeFiles/SERIAL_COM.dir/serial-com.cpp.o -c /home/tazvik/serial-com/serial-com/serial-com.cpp",
+  "file": "/home/tazvik/serial-com/serial-com/serial-com.cpp"
+}
+]
