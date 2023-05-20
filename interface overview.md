@@ -7,6 +7,9 @@ although code will be written in Cpp but surrounded with ``` extern "C" {}```
 
 file handle will be stored in a structure object.
 
+
+We will use submodules in eco car serial interface to use os serial.
+
 ```C 
 
 struct serial_port {
