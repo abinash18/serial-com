@@ -29,21 +29,4 @@ struct serial_port
  *
  */
 
-/**
-* Op
-*/
-int open_port(SP, const char *portname, speed_t baudrate, int blocking);
-
-/**
- * @brief Close the provided port and free it.
- * @param Port struct to free
- * @return error code.
- */
-int close(SP);
-
-/**
- * @brief Checks if there is bytes waiting in input buffer.
- * @param Port to check.
- * @return Number of bytes waiting (>=0). or -1 if error.
- */
-int input_waiting(SP);
+int open_serial_port(const char *portname, speed_t baudrate);
