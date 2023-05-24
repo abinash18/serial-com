@@ -14,7 +14,7 @@ int open_serial_port(const char *portname, speed_t baudrate)
     // Loop through a list of possible port names
     for (int i = 0; i < 10; i++) {
         snprintf(devname, sizeof(devname), "%s%d", portname, i);
-        fd = open(devname, O_RDWR | O_NOCTTY | O_NONBLOCK);
+        fd = open_port(devname, O_RDWR | O_NOCTTY | O_NONBLOCK);
         if (fd >= 0) {
             // Set the serial port parameters
             tcgetattr(fd, &tty);
@@ -31,7 +31,7 @@ int open_serial_port(const char *portname, speed_t baudrate)
     }
 
     // If no port is found, return an error
-    fprintf(stderr, "Failed to open serial port %s\n", portname);
+    fprintf(stderr, "Failed to open_port serial port %s\n", portname);
     return -1;
 }
 

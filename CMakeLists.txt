@@ -5,6 +5,8 @@ add_subdirectory(serial-com)
 
 add_executable(TEST_COM main.cpp)
 
+target_compile_definitions(SERIAL_COM PUBLIC DEBUG ON)
+
 set_target_properties(SERIAL_COM PROPERTIES CMAKE_POSITION_INDEPENDENT_CODE ON)
 target_link_libraries(${PROJECT_NAME} SERIAL_COM)
 

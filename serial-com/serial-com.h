@@ -8,6 +8,13 @@
 
 #define SP struct serial_port &sp
 
+#define PRINT(fmt, ...)                          \
+    do                                           \
+    {                                            \
+        if (DEBUG)                               \
+            fprintf(stderr, fmt, ##__VA_ARGS__); \
+    } while (0)
+
 struct serial_port
 {
     int file_handle = -1; // handle to the port.
@@ -22,7 +29,10 @@ struct serial_port
  *
  */
 
-int open(SP, const char *portname, speed_t baudrate);
+/**
+* Op
+*/
+int open_port(SP, const char *portname, speed_t baudrate, int blocking);
 
 /**
  * @brief Close the provided port and free it.

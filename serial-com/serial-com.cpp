@@ -1,9 +1,8 @@
 #include "serial-com.h"
 
-extern "C"
-{
-
+  
     int open_serial_port(const char *portname, speed_t baudrate)
+ 
     {
         int fd;
         struct termios tty;
@@ -31,7 +30,16 @@ extern "C"
         }
 
         // If no port is found, return an error
-        fprintf(stderr, "Failed to open serial port %s\n", portname);
+        fprintf(stderr, "Failed to open_port serial port %s\n", portname);
         return -1;
-    }
+    
+}
+
+int open_port(SP, const char * path, speed_t baudrate, int blocking) {
+        sp.file_handle = open(path, O_RDWR | O_NOCTTY | (blocking) ? O_NONBLOCK : 0);
+        if (sp.file_handle >= 0) {
+
+        }
+        PRINT("Failed to open_port serial port %s\n", path);
+        return -1;
 }
