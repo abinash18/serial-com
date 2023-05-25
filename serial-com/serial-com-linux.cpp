@@ -1,4 +1,5 @@
-#include "serial-com.h"
+#include "serial-com-linux.h"
+
 
 int open_serial_port(const char *portname, speed_t baudrate)
 
