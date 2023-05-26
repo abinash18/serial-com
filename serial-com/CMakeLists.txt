@@ -10,7 +10,7 @@ endif()
 # I can add more source files if needed here
 add_library(
     SERIAL_COM STATIC # The library name is libSERIAL_INTERFACE and it is compiled as a shared object (.so)
-    serial-com.h  
+    serial-com.h
     ${SOURCES}
 )
 target_include_directories(SERIAL_COM PUBLIC ${CMAKE_CURRENT_SOURCE_DIR})

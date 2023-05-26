@@ -4,35 +4,33 @@
 #define SP struct serial_port &sp
 
 #define PRINT(fmt, ...)                          \
-    do                                           \
-    {                                            \
-        if (DEBUG)                               \
-            fprintf(stderr, fmt, ##__VA_ARGS__); \
-    } while (0)
+	do                                           \
+	{                                            \
+		if (DEBUG)                               \
+			fprintf(stderr, fmt, ##__VA_ARGS__); \
+	} while (0)
 
 /**
  * @brief Boolean for easy types.
  */
-enum BOOL
-{
-    TRUE = 1,
-    FALSE = 0
+enum BOOL {
+	TRUE = 1,
+	FALSE = 0
 };
 
 // Removed termios.
-struct serial_port
-{
-    int file_handle = -1; // handle to the port.
-    int mode = 0;
-    char* path; // Physical system path of com port
-    int baudrate;
-    BOOL parity = FALSE,
-        /** If TRUE two stop bits are used, if FALSE only one is used*/
-        two_stop_bits = FALSE;
-    /** Number bits 5 6 7 or 8 */
-    int num_bits = 8;
+struct serial_port {
+	int   file_handle = -1; // handle to the port.
+	int   mode        = 0;
+	char* path; // Physical system path of com port
+	int   baudrate;
+	BOOL  parity = FALSE,
+	      /** If TRUE two stop bits are used, if FALSE only one is used*/
+	      two_stop_bits = FALSE;
+	/** Number bits 5 6 7 or 8 */
+	int num_bits = 8;
 
-    BOOL flow_control = FALSE;
+	BOOL flow_control = FALSE;
 };
 
 // TODO: Save terminal config and reapply once port is closed
