@@ -19,6 +19,22 @@ enum BOOL
     FALSE = 0
 };
 
+// Removed termios.
+struct serial_port
+{
+    int file_handle = -1; // handle to the port.
+    int mode = 0;
+    char* path; // Physical system path of com port
+    int baudrate;
+    BOOL parity = FALSE,
+        /** If TRUE two stop bits are used, if FALSE only one is used*/
+        two_stop_bits = FALSE;
+    /** Number bits 5 6 7 or 8 */
+    int num_bits = 8;
+
+    BOOL flow_control = FALSE;
+};
+
 // TODO: Save terminal config and reapply once port is closed
 // TODO: Time outs.
 // TODO: Read until
@@ -29,9 +45,9 @@ enum BOOL
  *
  */
 
-int open_serial_port(const char *portname, int baudrate);
+int open_serial_port(const char* portname, int baudrate);
 
-int open_port(SP, const char *portname, int baudrate);
+int open_port(SP, const char* portname, int baudrate);
 
 /**
  * @brief Close the provided port and free it.

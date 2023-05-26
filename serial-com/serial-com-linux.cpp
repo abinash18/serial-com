@@ -1,7 +1,7 @@
 #include "serial-com-linux.h"
 
 
-int open_serial_port(const char *portname, speed_t baudrate)
+int open_serial_port(const char* portname, speed_t baudrate)
 
 {
     int fd;
@@ -65,7 +65,7 @@ int open_serial_port(const char *portname, speed_t baudrate)
  *
  */
 
-int open_port(SP, const char *path, speed_t baudrate, int blocking)
+int open_port(SP, const char* path, speed_t baudrate, int blocking)
 {
     if (sp.file_handle != -1)
     {
@@ -75,60 +75,61 @@ int open_port(SP, const char *path, speed_t baudrate, int blocking)
     sp.file_handle = open(path, O_RDWR | O_NOCTTY | (blocking) ? O_NONBLOCK : 0);
     if (sp.file_handle >= 0)
     {
+        struct termios tty;
         // Set the serial port parameters
-        tcgetattr(sp.file_handle, &sp.tty);
+        tcgetattr(sp.file_handle, &tty);
 
         if (sp.parity)
-            sp.tty.c_cflag &= ~PARENB;
+            tty.c_cflag &= ~PARENB;
         else
-            sp.tty.c_cflag |= PARENB;
+            tty.c_cflag |= PARENB;
 
         if (sp.two_stop_bits)
-            sp.tty.c_cflag |= CSTOPB;
+            tty.c_cflag |= CSTOPB;
         else
-            sp.tty.c_cflag &= ~CSTOPB;
+            tty.c_cflag &= ~CSTOPB;
 
         switch (sp.num_bits)
         {
         case 5:
-            sp.tty.c_cflag |= CS5;
+            tty.c_cflag |= CS5;
             break;
         case 6:
-            sp.tty.c_cflag |= CS6;
+            tty.c_cflag |= CS6;
             break;
         case 7:
-            sp.tty.c_cflag |= CS7;
+            tty.c_cflag |= CS7;
             break;
         case 8:
-            sp.tty.c_cflag |= CS8;
+            tty.c_cflag |= CS8;
             break;
         default:
-            sp.tty.c_cflag |= CS8;
+            tty.c_cflag |= CS8;
             break;
         }
 
         if (sp.flow_control)
-            sp.tty.c_cflag |= CRTSCTS;
+            tty.c_cflag |= CRTSCTS;
         else
-            sp.tty.c_cflag &= ~CRTSCTS;
+            tty.c_cflag &= ~CRTSCTS;
 
-        sp.tty.c_iflag &= ~INPCK;
+        tty.c_iflag &= ~INPCK;
 
         // disable software flow control
-        sp.tty.c_iflag &= ~(IXON | IXOFF | IXANY);
+        tty.c_iflag &= ~(IXON | IXOFF | IXANY);
 
         // Disable input handling
-        sp.tty.c_iflag &= ~(IGNBRK | BRKINT | PARMRK | ISTRIP | INLCR | IGNCR | ICRNL);
+        tty.c_iflag &= ~(IGNBRK | BRKINT | PARMRK | ISTRIP | INLCR | IGNCR | ICRNL);
 
-        sp.tty.c_lflag &= ~(ICANON | ECHO | ECHOE | ECHONL | ISIG);
+        tty.c_lflag &= ~(ICANON | ECHO | ECHOE | ECHONL | ISIG);
 
         // prevent output processing.
-        sp.tty.c_oflag &= ~OPOST;
+        tty.c_oflag &= ~OPOST;
 
         cfsetispeed(&sp.tty, baudrate);
         cfsetospeed(&sp.tty, baudrate);
 
-        if (tcsetattr(sp.file_handle, TCSANOW, &sp.tty) != 0)
+        if (tcsetattr(sp.file_handle, TCSANOW, &tty) != 0)
         {
             PRINT("Error %i from tcsetattr: %s\n", errno, strerror(errno));
             return -1;
