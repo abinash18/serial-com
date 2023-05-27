@@ -1,8 +1,8 @@
-if(${CMAKE_SYSTEM_NAME} MATCHES "Linux") 
+if(${CMAKE_HOST_SYSTEM_NAME} MATCHES "Linux") 
     set(SOURCES serial-com-linux.h serial-com-linux.cpp)
 endif()
 
-if(${CMAKE_SYSTEM_NAME} MATCHES "Windows")
+if(${CMAKE_HOST_SYSTEM_NAME} MATCHES "Windows")
     set(SOURCES serial-com-windows.h serial-com-windows.cpp)
 endif()
 
@@ -11,8 +11,9 @@ endif()
 add_library(
     SERIAL_COM STATIC # The library name is libSERIAL_INTERFACE and it is compiled as a shared object (.so)
     serial-com.h
+    serial-com.cpp
     ${SOURCES}
-)
+ )
 target_include_directories(SERIAL_COM PUBLIC ${CMAKE_CURRENT_SOURCE_DIR})
 
 set_target_properties(SERIAL_COM PROPERTIES CMAKE_POSITION_INDEPENDENT_CODE ON)
